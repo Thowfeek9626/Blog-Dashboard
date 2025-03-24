@@ -31,8 +31,8 @@ export default function Home() {
         <PostCard post={post} key={post?.id} />
       ))}
 
-      <Box mt={4} mb={4} sx={{position: "fixed",bottom: 0,left:'40%',zIndex: 10,display:'flex',justifyContent:'center',alignItems:'center'}}>
-        <Pagination count={10} page={page} onChange={handleChange} color="primary" />
+      <Box mt={6} mb={4} sx={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+        <Pagination count={10} page={page} onChange={handleChange} color="secondary"  size="large" shape="rounded"/>
       </Box>
     </Container>
   );
