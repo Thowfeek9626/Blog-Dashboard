@@ -2,16 +2,17 @@
 
 import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { useCreatePostMutation } from "../../features/postsApi";
+import { useCreatePostMutation } from "@/features/postsApi";
 import { Container, TextField, Button, Typography, Snackbar, Alert } from "@mui/material";
 
 export default function NewPost() {
   const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
   const [body, setBody] = useState("");
   const [open, setOpen] = useState(false);
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [titleError, setTitleError] = useState(false); 
+  const [titleError, setTitleError] = useState(false);
   const [bodyError, setBodyError] = useState(false);
 
   const router = useRouter();
@@ -22,9 +23,9 @@ export default function NewPost() {
     setBodyError(false);
 
     if (!title.trim() || !body.trim()) {
-      if (!title.trim()) setTitleError(true);
-      if (!body.trim()) setBodyError(true);
-      return; 
+      setTitleError(!title.trim());
+      setBodyError(!body.trim());
+      return;
     }
 
     setLoading(true);
@@ -34,6 +35,7 @@ export default function NewPost() {
       setTitle("");
       setBody("");
       setTimeout(() => router.push("/"), 2000);
+      router.refresh(); // ✅ Refresh the page to update posts list dynamically
     } catch (error) {
       setIsError(true);
       console.error("Error creating post:", error);
@@ -51,8 +53,14 @@ export default function NewPost() {
           fullWidth
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          error={titleError} 
+          error={titleError}
           helperText={titleError ? "Title is required" : ""}
+        />
+        <TextField
+          label="Author"
+          fullWidth
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
         />
         <TextField
           label="Body"
@@ -61,7 +69,7 @@ export default function NewPost() {
           rows={4}
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          error={bodyError} 
+          error={bodyError}
           helperText={bodyError ? "Body is required" : ""}
         />
         <Button
