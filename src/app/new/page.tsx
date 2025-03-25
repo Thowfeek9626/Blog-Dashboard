@@ -33,6 +33,7 @@ export default function NewPost() {
       await createPost({ title, body, author: "User" }).unwrap();
       setOpen(true);
       setTitle("");
+      setAuthor("");
       setBody("");
       setTimeout(() => router.push("/"), 2000);
       router.refresh(); // ✅ Refresh the page to update posts list dynamically
