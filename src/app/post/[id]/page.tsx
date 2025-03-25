@@ -10,7 +10,8 @@ async function getPost(id: number) {
 }
 
 export default async function PostDetail({ params }: { params: { id: string } }) {
-  const postId = Number(params.id);
+  const { id } = await params
+  const postId = Number(id);
   if (isNaN(postId)) return notFound(); 
 
   const post = await getPost(postId);
