@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Post,PaginationParams } from "@/app/types";
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = 'https://67e23df697fc65f535351a87.mockapi.io';
 
 
 export const postsApi = createApi({
