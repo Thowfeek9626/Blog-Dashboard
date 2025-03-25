@@ -1,12 +1,13 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useGetPostByIdQuery } from "../../../features/postsApi";
-import { Container, Typography, Box, Paper } from "@mui/material";
+import { Container, Typography, Box, Paper, Button } from "@mui/material";
 import GradientCircularProgress from "@/components/CircularProgress";
 
 export default function PostDetail() {
   const { id } = useParams();
+  const router = useRouter();
   const { data: post, isLoading, error } = useGetPostByIdQuery(Number(id));
 
   if (isLoading)
@@ -28,6 +29,22 @@ export default function PostDetail() {
         alignItems: "center",
       }}
     >
+      {/* Back Button */}
+      <Box sx={{ width: "100%", display: "flex", justifyContent: "flex-start", mb: 2 }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => router.push("/")}
+          sx={{
+            backgroundColor: "#4A00E0",
+            "&:hover": { backgroundColor: "#8E2DE2" },
+          }}
+        >
+          ← Back to Home
+        </Button>
+      </Box>
+
+      {/* Post Card */}
       <Paper
         elevation={5}
         sx={{

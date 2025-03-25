@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from '../../public/logo.png';
 import MenuIcon from '@mui/icons-material/Menu';
+import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { useState } from "react";
 
 export default function Header() {
@@ -21,24 +22,28 @@ export default function Header() {
     >
       <Toolbar>
         <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
-          <Image
-            src={logo}
-            alt="Blog Logo"
-            width={50}
-            height={50}
-            style={{ transform: 'scale(1.5)', objectFit: 'contain' }}
-          />
-          <Typography
-            variant="overline"
-            sx={{
-              fontFamily: "'Poppins', sans-serif",
-              letterSpacing: 1,
-              marginLeft: 1,
-              color: "#fcecd3",
-            }}
-          >
-            Blog Dashboard
-          </Typography>
+          <Link href="/" passHref>
+            <Box sx={{ cursor: "pointer", display: "flex", alignItems: "center" }}>
+              <Image
+                src={logo}
+                alt="Blog Logo"
+                width={50}
+                height={50}
+                style={{ transform: 'scale(1.5)', objectFit: 'contain' }}
+              />
+              <Typography
+                variant="overline"
+                sx={{
+                  fontFamily: "'Poppins', sans-serif",
+                  letterSpacing: 1,
+                  marginLeft: 1,
+                  color: "#fcecd3",
+                }}
+              >
+                Blog Dashboard
+              </Typography>
+            </Box>
+          </Link>
         </Box>
         <IconButton
           color="inherit"
@@ -97,6 +102,13 @@ export default function Header() {
             padding: 2,
           }}
         >
+          {/* Close Drawer Button */}
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <IconButton onClick={toggleDrawer} sx={{ color: "#fff" }}>
+              <HighlightOffTwoToneIcon />
+            </IconButton>
+          </Box>
+
           <List>
             <ListItem
               component={Link}
