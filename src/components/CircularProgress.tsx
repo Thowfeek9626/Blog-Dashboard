@@ -1,10 +1,8 @@
-import * as React from 'react';
-import Stack from '@mui/material/Stack';
-import CircularProgress from '@mui/material/CircularProgress';
+import { Stack, CircularProgress } from "@mui/material";
 
-function GradientCircularProgress() {
+export default function GradientCircularProgress() {
   return (
-        <Stack spacing={2} sx={{ flexGrow: 1 ,alignItems:'center'}}>
+    <Stack spacing={2} sx={{ flexGrow: 1, alignItems: "center" }}>
       <svg width={0} height={0}>
         <defs>
           <linearGradient id="my_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -13,9 +11,7 @@ function GradientCircularProgress() {
           </linearGradient>
         </defs>
       </svg>
-      <CircularProgress sx={{ 'svg circle': { stroke: 'url(#my_gradient)' } }} />
-        </Stack>
+      <CircularProgress sx={{ "svg circle": { stroke: "url(#my_gradient)" } }} />
+    </Stack>
   );
 }
-
-export default GradientCircularProgress;

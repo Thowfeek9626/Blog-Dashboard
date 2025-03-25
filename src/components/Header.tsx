@@ -27,6 +27,7 @@ export default function Header() {
               <Image
                 src={logo}
                 alt="Blog Logo"
+                priority
                 width={50}
                 height={50}
                 style={{ transform: 'scale(1.5)', objectFit: 'contain' }}
