@@ -18,9 +18,10 @@ const PostCard: React.FC<{ post: Post }> = ({ post }) => (
       <Typography variant="h5" sx={{ fontWeight: "bold", color: "#4A00E0", letterSpacing: 0.5, mb: 1 }}>
         {post.title}
       </Typography>
-      <Typography variant="body2" sx={{ color: "#555", mb: 2, lineHeight: 1.5 }}>
+      <Typography variant="body1" sx={{ color: "#555", mb: 1, lineHeight: 1.5 }}>
         {post.body.slice(0, 100)}...
       </Typography>
+      <Typography variant="caption">- By <span style={{fontWeight:'bold'}}>{post.author}</span></Typography>
       <Box display="flex" justifyContent="flex-end">
         <Link href={`/post/${post.id}`} passHref>
           <Button

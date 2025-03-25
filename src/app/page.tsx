@@ -31,7 +31,7 @@ export default function Home() {
       {posts.map((post) => (
         <PostCard key={post?.id} post={post} />
       ))}
-      <Box mt={6} mb={4} sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Box mt={4} mb={4} sx={{ display: 'flex', justifyContent: 'center' }}>
         <Pagination count={10} page={page} onChange={handleChange} color="secondary" size="large" shape="rounded" />
       </Box>
     </Container>

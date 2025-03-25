@@ -85,6 +85,7 @@ export default function PostDetail() {
         >
           {post.body}
         </Typography>
+        <Typography variant="caption">- By <span style={{fontWeight:'bold'}}>{post.author}</span></Typography>
 
         <Box
           sx={{

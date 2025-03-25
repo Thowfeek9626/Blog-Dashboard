@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { useAddPostMutation } from "../../features/postsApi";
+import { useCreatePostMutation } from "../../features/postsApi";
 import { Container, TextField, Button, Typography, Snackbar, Alert } from "@mui/material";
 
 export default function NewPost() {
@@ -15,7 +15,7 @@ export default function NewPost() {
   const [bodyError, setBodyError] = useState(false);
 
   const router = useRouter();
-  const [addPost] = useAddPostMutation();
+  const [createPost] = useCreatePostMutation();
 
   const handleSubmit = useCallback(async () => {
     setTitleError(false);
@@ -29,7 +29,7 @@ export default function NewPost() {
 
     setLoading(true);
     try {
-      await addPost({ title, body, author: "User" }).unwrap();
+      await createPost({ title, body, author: "User" }).unwrap();
       setOpen(true);
       setTitle("");
       setBody("");
@@ -40,7 +40,7 @@ export default function NewPost() {
     } finally {
       setLoading(false);
     }
-  }, [title, body, addPost, router]);
+  }, [title, body, createPost, router]);
 
   return (
     <>
