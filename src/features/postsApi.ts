@@ -25,7 +25,7 @@ export const postsApi = createApi({
         method: "POST",
         body: newPost,
       }),
-      invalidatesTags: [{ type: "Post", id: "LIST" }], // ✅ Auto-refresh posts
+      invalidatesTags: [{ type: "Post", id: "LIST" }],
     }),
   }),
 });

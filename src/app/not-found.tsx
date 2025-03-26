@@ -43,20 +43,18 @@ export default function NotFound() {
           variant="h3"
           sx={{
             fontWeight: "bold",
-            color: '#4e03e0',
+            color: (theme) => theme.palette.primary.main,
             marginBottom: theme.spacing(2),
           }}
         >
           404 - Page Not Found
         </Typography>
         <Typography
-          variant="h6"
+          variant="body2"
           sx={{
-            fontWeight: "500",
-            color: theme.palette.text.secondary,
+            color: (theme) => theme.palette.text.primary,
             marginBottom: theme.spacing(3),
             lineHeight: 1.6,
-            fontSize: { xs: "14px", sm: "16px", md: "18px" },
           }}
         >
           Sorry, the page you're looking for does not exist or has been moved. Please check the URL or go back to the homepage.
@@ -69,7 +67,7 @@ export default function NotFound() {
             fontSize: { xs: "14px", sm: "16px" },
             padding: theme.spacing(1, 4),
             borderRadius: "30px",
-            backgroundColor: "#4e03e0",
+            backgroundColor: (theme) => theme.palette.primary.main,
             boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
             transition: "all 0.3s ease",
             "&:hover": {

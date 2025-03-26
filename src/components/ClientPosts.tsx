@@ -15,7 +15,6 @@ export default function ClientPosts({ initialPosts }: { initialPosts: any[] }) {
     setPage(value);
   };
 
-  // Fix hydration issue by setting initial data
   const [hydratedPosts, setHydratedPosts] = useState(initialPosts);
   useEffect(() => {
     if (posts) setHydratedPosts(posts);
