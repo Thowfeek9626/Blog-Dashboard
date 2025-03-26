@@ -1,7 +1,13 @@
 "use client";
 
 import { useGetPostByIdQuery } from "@/features/postsApi";
-import { Container, Typography, Box, Paper, Button } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Box,
+  Paper,
+  Button,
+} from "@mui/material";
 import GradientCircularProgress from "@/components/CircularProgress";
 
 export default function ClientPostDetail({ initialPost, id }: { initialPost: any; id: number }) {
@@ -18,13 +24,53 @@ export default function ClientPostDetail({ initialPost, id }: { initialPost: any
 
   return (
     <Container sx={{ paddingTop: "20px", maxWidth: "800px" }}>
+      {/* Back Button */}
       <Box sx={{ display: "flex", justifyContent: "flex-start", mb: 2 }}>
-        <Button color="secondary" sx={{ backgroundColor: "#4e03e0","&:hover": { backgroundColor: "#8d2de2" }}} variant="contained" href="/">← Back</Button>
+        <Button
+          color="secondary"
+          variant="contained"
+          href="/"
+          sx={{
+            backgroundColor: (theme) => theme.palette.primary.main,
+            "&:hover": { backgroundColor: (theme) => theme.palette.primary.dark },
+          }}
+        >
+          ← Back
+        </Button>
       </Box>
-      <Paper sx={{ padding: "30px", boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.1)" }}>
-        <Typography variant="h3" sx={{ fontWeight: "bold", color: "#4A00E0" }}>{post.title}</Typography>
-        <Typography variant="body1" sx={{ marginBottom: "20px", textAlign: "justify" }}>{post.body}</Typography>
-        <Typography variant="caption">- By <b>{post.author}</b></Typography>
+
+      {/* Post Details */}
+      <Paper
+        sx={{
+          padding: "30px",
+          boxShadow: 3,
+          backgroundColor: (theme) => theme.palette.background.paper,
+          borderRadius: 2,
+          marginBottom:'2px'
+        }}
+      >
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: "bold",
+            color: (theme) => theme.palette.primary.main,
+          }}
+        >
+          {post.title}
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            marginBottom: "20px",
+            textAlign: "justify",
+            color: (theme) => theme.palette.text.primary,
+          }}
+        >
+          {post.body}
+        </Typography>
+        <Typography variant="caption">
+          - By <b>{post.author}</b>
+        </Typography>
       </Paper>
     </Container>
   );

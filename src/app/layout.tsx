@@ -1,8 +1,11 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
 import Header from "../components/Header"; 
 import ReduxProvider from "../components/ReduxProvider";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import theme from "@/lib/theme";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,19 +17,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "My Blog Dashboard",
-  description: "A simple blog dashboard using Next.js and Material-UI",
-};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}  style={{userSelect: 'none'}}>
-        <ReduxProvider>
-          <Header />
-          {children}
-        </ReduxProvider>
+      <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <ReduxProvider>
+            <Header />
+            {children}
+          </ReduxProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

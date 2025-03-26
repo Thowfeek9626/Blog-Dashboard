@@ -16,7 +16,7 @@ export default function Header() {
     <AppBar
       position="sticky"
       sx={{
-        background: "linear-gradient(90deg, #4A00E0, #8E2DE2)",
+        background: "linear-gradient(90deg, #2196F3 0%, #E91E63 100%)",
         boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
       }}
     >

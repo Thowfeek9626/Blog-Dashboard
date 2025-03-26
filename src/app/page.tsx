@@ -8,6 +8,12 @@ async function getPosts(page = 1, limit = 4) {
   return res.json();
 }
 
+export const metadata = {
+  title: "Blog Dashboard",
+  description: "The dashboard will display a list of blog posts",
+};
+
+
 export default async function Home() {
   const page = 1;
   const limit = 4;

@@ -3,7 +3,14 @@
 import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useCreatePostMutation } from "@/features/postsApi";
-import { Container, TextField, Button, Typography, Snackbar, Alert } from "@mui/material";
+import {
+  Container,
+  TextField,
+  Button,
+  Typography,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 
 export default function NewPost() {
   const [title, setTitle] = useState("");
@@ -36,7 +43,6 @@ export default function NewPost() {
       setAuthor("");
       setBody("");
       setTimeout(() => router.push("/"), 2000);
-      router.refresh(); // ✅ Refresh the page to update posts list dynamically
     } catch (error) {
       setIsError(true);
       console.error("Error creating post:", error);
@@ -47,8 +53,31 @@ export default function NewPost() {
 
   return (
     <>
-      <Container sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 3 }}>
-        <Typography variant="h4">Create New Post</Typography>
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          backgroundColor: (theme) => theme.palette.background.paper,
+          padding: { xs: 2, sm: 3 },
+          borderRadius: 2,
+          boxShadow: 2,
+          maxWidth: { xs: "90%", sm: "500px" },
+          margin: "auto",
+          marginTop:'36px',
+          marginBottom:'2px'
+        }}
+      >
+        <Typography
+          variant="h5"
+          sx={{
+            color: (theme) => theme.palette.primary.main,
+            textAlign: "center",
+          }}
+        >
+          Create New Post
+        </Typography>
+
         <TextField
           label="Title"
           fullWidth
@@ -78,10 +107,13 @@ export default function NewPost() {
           variant="contained"
           disabled={loading}
           sx={{
-            backgroundColor: "#4e03e0",
-            "&:hover": { backgroundColor: "#8d2de2" },
-            width: "auto",
-            alignSelf: "start",
+            backgroundColor: (theme) => theme.palette.primary.main,
+            "&:hover": {
+              backgroundColor: (theme) => theme.palette.secondary.light,
+              color: "white",
+            },
+            width: { xs: "100%", sm: "auto" },
+            alignSelf: {xs:"",sm:"start"},
           }}
         >
           {loading ? "Submitting..." : "Submit"}
@@ -89,7 +121,15 @@ export default function NewPost() {
       </Container>
 
       <Snackbar open={open} autoHideDuration={3000} onClose={() => setOpen(false)}>
-        <Alert severity={isError ? "error" : "success"} variant="filled" sx={{ width: "100%" }}>
+        <Alert
+          severity={isError ? "error" : "success"}
+          variant="filled"
+          sx={{
+            width: "100%",
+            backgroundColor: (theme) =>
+              isError ? theme.palette.error.main : theme.palette.success.main,
+          }}
+        >
           {isError ? "Could not create Post" : "Post submitted successfully!"}
         </Alert>
       </Snackbar>
